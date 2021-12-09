@@ -6,6 +6,7 @@ import code         # code.interact
 import os           # environment variables
 import inspect      # call stack inspection
 import random       # dumb random number generator
+import argparse
  
 from discord.ext import commands    # Bot class and utils
  
@@ -140,10 +141,14 @@ async def on_voice_state_update(member, before, after):
 ################################################################################
  
 if __name__ == '__main__':
-    # check that token exists in environment
-    if 'BOT_TOKEN' not in os.environ:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--token", help="input token")
+    args = parser.parse_args()
+    if args.token:
+	BOT_TOKEN = args.token
+	bot.run('BOT_TOKEN')
+    else if 'BOT_TOKEN' in os.environ
+	bot.run(os.environ['BOT_TOKEN'])
+    else if 'BOT_TOKEN' not in os.environ:
         log_msg('save your token in the BOT_TOKEN env variable!', 'error')
         exit(-1)
- 
-    # launch bot (blocking operation)
-    bot.run(os.environ['BOT_TOKEN'])
