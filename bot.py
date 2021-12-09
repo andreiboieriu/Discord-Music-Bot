@@ -1,3 +1,4 @@
+#COPYRIGHT 2021 Boieriu Andrei-Teodor
 #!./.venv/bin/python
  
 import discord      # base discord module
